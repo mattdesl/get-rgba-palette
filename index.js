@@ -1,13 +1,13 @@
 var quantize = require('quantize')
 
-module.exports = function(pixels, width, count, quality) {
-    return compute(pixels, width, count, quality).map(function(vb) {
+module.exports = function(pixels, count, quality) {
+    return compute(pixels, count, quality).map(function(vb) {
         return vb.color
     })
 }
 
-module.exports.bins = function(pixels, width, count, quality) {
-    var vboxes = compute(pixels, width, count, quality)
+module.exports.bins = function(pixels, count, quality) {
+    var vboxes = compute(pixels, count, quality)
 
     vboxes = vboxes.map(function(vb) {
         return {
@@ -29,9 +29,11 @@ module.exports.bins = function(pixels, width, count, quality) {
     return vboxes
 }
 
-function compute(pixels, width, count, quality) {
-    count = typeof count === 'number' ? count : 5
-    quality = typeof quality === 'number' ? quality : 10
+function compute(pixels, count, quality) {
+    count = typeof count === 'number' ? (count|0) : 5
+    quality = typeof quality === 'number' ? (quality|0) : 10
+    if (quality <= 0)
+        throw new Error('quality must be > 0')
 
     // Store the RGB values in an array format suitable for quantize function
     var pixelArray = [],

@@ -1,6 +1,6 @@
 {
   "name": "get-rgba-palette",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "gets a palette of prominent colors from an array of pixels",
   "main": "index.js",
   "license": "MIT",

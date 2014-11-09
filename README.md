@@ -4,6 +4,7 @@
 
 Gets a palette of prominent colors from a flat array of RGBA pixels.
 
+![img](http://i.imgur.com/arnLlX0.png)
 
 Full example: 
 

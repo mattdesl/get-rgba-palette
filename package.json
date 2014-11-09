@@ -10,10 +10,10 @@
     "url": "https://github.com/mattdesl"
   },
   "dependencies": {
-    "array-range": "^1.0.1",
     "quantize": "^1.0.1"
   },
   "devDependencies": {
+    "array-range": "^1.0.1",
     "almost-equal": "0.0.0",
     "tape": "^3.0.2"
   },

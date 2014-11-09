@@ -23,6 +23,8 @@ load(baboon, function(err, img) {
 })
 ```
 
+[RequireBin demo](http://requirebin.com/?gist=1f49e56f22fa9caa94d7)
+
 Returns RGB colors in the form of:  
 
 ```[ [255, 0, 0], [128, 23, 52], [124, 0, 62], etc.. ]``` 

@@ -1,6 +1,6 @@
 # get-rgba-palette
 
-[![unstable](http://badges.github.io/stability-badges/dist/unstable.svg)](http://github.com/badges/stability-badges)
+[![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
 
 Gets a palette of prominent colors from a flat array of RGBA pixels.
 

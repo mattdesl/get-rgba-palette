@@ -1,7 +1,7 @@
 var quantize = require('quantize')
 
-module.exports = function(pixels, count, quality) {
-    return compute(pixels, count, quality).map(function(vb) {
+module.exports = function(pixels, count, quality, filter) {
+    return compute(pixels, count, quality, filter).map(function(vb) {
         return vb.color
     })
 }
@@ -29,7 +29,7 @@ module.exports.bins = function(pixels, count, quality) {
     return vboxes
 }
 
-function compute(pixels, count, quality) {
+function compute(pixels, count, quality, filter) {
     count = typeof count === 'number' ? (count|0) : 5
     quality = typeof quality === 'number' ? (quality|0) : 10
     if (quality <= 0)
@@ -45,11 +45,8 @@ function compute(pixels, count, quality) {
             b = pixels[i + 2],
             a = pixels[i + 3]
 
-        // If pixel is mostly opaque and not white
-        if (a >= 125) {
-            if (!(r > 250 && g > 250 && b > 250)) {
-                pixelArray.push([r, g, b])
-            }
+        if (!filter || filter(pixels, i, pixels)) {
+            pixelArray.push([r, g, b])
         }
     }
 

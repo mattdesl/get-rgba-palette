@@ -33,13 +33,24 @@ Returns RGB colors in the form of:
 
 [![NPM](https://nodei.co/npm/get-rgba-palette.png)](https://nodei.co/npm/get-rgba-palette/)
 
-#### `palette(pixels[, count, quality])`
+#### `palette(pixels[, count, quality, filter])`
 
 Gets an array of RGB colors from an image (`pixels` is a flat RGBA array). Defaults to a `count` of 5 colors and a `quality` setting of 10. 
 
 `quality` determines the step between each pixel when computing the quantization; higher number means fuzzier quality. Must be > 0.
 
-#### `palette.bins(pixels[, count, quality])`
+`filter` allows you to threshold the RGBA values given to the quantize function. It passes `(pixels, index)` -- the flat array and index to the RGBA component. Return true to accept the color, or false to reject.
+
+If not specified, the filter function defaults to:
+
+```js
+function filter (pixels, index) {
+  // offset 3 --> alpha
+  return pixels[index + 3] >= 127
+}
+```
+
+#### `palette.bins(pixels[, count, quality, filter])`
 
 Instead of returning RGB colors, this returns the "bins" for each computed color. This can give you a very rough overview of the distribution of colours in the image. This is fairly arbitrary as the bin `size` does not always represent the exact number of pixels for that color in the image.
 

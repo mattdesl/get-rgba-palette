@@ -12,7 +12,7 @@ Full example:
 var palette = require('get-rgba-palette')
 var pixels = require('get-image-pixels')
 var load = require('img')
-var baboon = rqeuire('baboon-image-uri')
+var baboon = require('baboon-image-uri')
 
 load(baboon, function(err, img) {
     //get flat RGBA pixels array

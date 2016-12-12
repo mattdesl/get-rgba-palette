@@ -51,6 +51,20 @@ test("gets a palette of main colors from an array of pixels", function(t) {
     t.end()
 })
 
+test("gets bins from an empty array without crashing", function(t) {
+    //a red image
+    var red = array(100)
+        .map(function() { return RED })
+        .reduce(concat)
+
+    t.deepEqual(palette.bins(red, 1, 1, alwaysFalseFilter), [], 'should return empty array')
+    t.end()
+})
+
 function sum(prev, a) {
     return prev + a.amount
+}
+
+function alwaysFalseFilter(pixels, index) {
+    return false;
 }

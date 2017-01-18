@@ -57,7 +57,12 @@ function compute(pixels, count, quality, filter) {
 
     //fix because quantize breaks on < 2
     var vboxes = quantize(pixelArray, Math.max(2,count)).vboxes
-    return vboxes.map(function(vb) { //map to array structure
-        return vb
-    }).slice(0, count)
+    if (vboxes) {
+        return vboxes.map(function(vb) { //map to array structure
+            return vb
+        }).slice(0, count)
+    }
+    else {
+        return [];
+    }
 }
